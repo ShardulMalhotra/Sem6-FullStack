@@ -33,3 +33,7 @@ npm run dev
 - Pagination controls
 - Alert components with icons
 - Professional styling and transitions
+
+## Screenshots
+<img width="1411" height="669" alt="Screenshot 2026-01-31 at 12 57 37 PM" src="https://github.com/user-attachments/assets/d5a693f3-fc8a-4010-b67f-43a1c83cfc91" />
+
