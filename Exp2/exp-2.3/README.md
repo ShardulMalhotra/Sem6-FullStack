@@ -30,3 +30,8 @@ npm run dev
 - Checkboxes and radio buttons
 - Form validation states
 - Professional form styling
+
+## Screenshots
+
+<img width="1419" height="680" alt="Screenshot 2026-01-31 at 1 04 31 PM" src="https://github.com/user-attachments/assets/6c5a56ea-a0e6-4371-b8b0-1faa178f7b89" />
+
