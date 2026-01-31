@@ -1,16 +1,35 @@
-# React + Vite
+# Exp 2.4 - Bootstrap Navigation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React application showcasing Bootstrap navigation components and interactive elements.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Professional navigation bar
+- Interactive tabs with content switching
+- Breadcrumb navigation
+- Simple pagination (1-5)
+- Clean white background design
+- Responsive layout
 
-## React Compiler
+## Technologies Used
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 18
+- Bootstrap 5
+- Font Awesome icons
+- Vite
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm install
+npm run dev
+```
+
+## Components Demonstrated
+
+- Bootstrap navbar with brand and links
+- Nav pills with active states
+- Breadcrumb navigation
+- Pagination controls
+- Alert components with icons
+- Professional styling and transitions
