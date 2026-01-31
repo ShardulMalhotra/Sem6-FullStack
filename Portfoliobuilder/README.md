@@ -158,11 +158,8 @@ This project is licensed under the MIT License.
 ![Portfolio Builder Interface](screen<img width="1409" height="676" alt="Screenshot 2026-01-31 at 10 04 30 AM" src="https://github.com/user-attachments/assets/c7595f8e-2d64-42f4-84b6-fa8ca3bf0194" />
 shot-main.png)
 
-![Portfolio Builder Inter<img width="1406" height="678" alt="Screenshot 2026-01-31 at 10 04 44 AM" src="https://github.com/user-attachments/assets/1200d1f1-4abc-4dee-a93b-c686625d05f7" />
-face](screenshot-main.png)
-
-![Portfolio Builder<img width="1350" height="675" alt="Screenshot 2026-01-31 at 10 13 38 AM" src="https://github.com/user-attachments/assets/2205a949-9faf-4e9f-bcbc-1cc897e6fba7" />
- Interface](screenshot-main.png)
+![Portfolio Builder Interface](screenshot-main<img width="1350" height="675" alt="Screenshot 2026-01-31 at 10 13 38 AM" src="https://github.com/user-attachments/assets/b4ab46af-e7eb-4553-9b47-33e75c05ab78" />
+.png)
 
 ### Template Selection
 ![Template Selection](screenshot-temp<img width="1384" height="672" alt="Screenshot 2026-01-31 at 10 24 51 AM" src="https://github.com/user-attachments/assets/25c352e2-0648-4b8b-84e8-1baa897dfadc" />
