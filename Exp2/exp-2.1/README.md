@@ -30,3 +30,6 @@ npm run dev
 - Interactive click counters
 - Loading button states
 - Hover effects and transitions
+
+## Screenshots
+![Uploading Screenshot 2026-01-31 at 12.59.08 PM.png…]()
