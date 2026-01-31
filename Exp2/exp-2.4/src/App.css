@@ -1,0 +1,94 @@
+body {
+  background: white;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.card {
+  border: 1px solid #e9ecef;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.nav-pills .nav-link {
+  border-radius: 4px;
+  margin: 0 5px;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.nav-pills .nav-link:hover {
+  background-color: rgba(108, 117, 125, 0.1);
+}
+
+.nav-pills .nav-link.active {
+  background-color: #6c757d;
+  color: white;
+  border-color: #6c757d;
+}
+
+.alert-custom {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+}
+
+.breadcrumb {
+  background: none;
+  padding: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  font-size: 1.2rem;
+  color: #6c757d;
+}
+
+.page-link {
+  border-radius: 4px;
+  margin: 0 2px;
+  border: 1px solid #dee2e6;
+  color: #6c757d;
+  transition: all 0.2s ease;
+}
+
+.page-link:hover {
+  background-color: #6c757d;
+  color: white;
+}
+
+.page-item.active .page-link {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.dropdown-menu {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+.dropdown-item {
+  padding: 10px 20px;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  .navbar-collapse {
+    display: none !important;
+  }
+}
