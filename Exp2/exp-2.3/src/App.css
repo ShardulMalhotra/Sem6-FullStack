@@ -1,17 +1,17 @@
-body {
-  background-color: #e8f5e8;
+/* Material UI App Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.card {
-  border: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  border-radius: 12px;
+html, body {
+  height: 100%;
+  width: 100%;
 }
 
-.form-control, .form-select {
-  border-radius: 8px;
-}
-
-.btn {
-  border-radius: 8px;
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
