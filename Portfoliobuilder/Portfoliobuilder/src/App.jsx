@@ -329,72 +329,113 @@ export default function App() {
   };
 
   const TemplatePreview = () => {
-    const skillsArray = data.skills.split(',').map(s => s.trim()).filter(s => s);
-    const projectsArray = data.projects.split('\n').filter(p => p.trim());
+    const skillsArray = data.skills.split ? data.skills.split(',').map(s => s.trim()).filter(s => s) : data.skills || [];
+    const projectsArray = data.projects ? data.projects.split('\n').filter(p => p.trim()) : [];
+    const experienceArray = data.experience ? data.experience.split('\n').filter(e => e.trim()) : [];
+    const educationArray = data.education ? data.education.split('\n').filter(e => e.trim()) : [];
+    const certificationsArray = data.certifications ? data.certifications.split('\n').filter(c => c.trim()) : [];
     const templateClass = `template-${template}`;
     
     return (
-      <Card className={`h-100 ${templateClass} position-relative overflow-hidden`}>
-        <div className="floating-elements">
-          <div className="floating-element" style={{width: '20px', height: '20px', top: '10%', left: '10%', animationDelay: '0s'}}></div>
-          <div className="floating-element" style={{width: '15px', height: '15px', top: '60%', right: '15%', animationDelay: '2s'}}></div>
-          <div className="floating-element" style={{width: '25px', height: '25px', bottom: '20%', left: '20%', animationDelay: '4s'}}></div>
-        </div>
-        
-        <Card.Body className="text-center position-relative">
-          {image && (
-            <img 
-              src={image} 
-              alt="Profile" 
-              className="profile-img rounded-circle mb-3"
-            />
-          )}
-          <h3 className="fw-bold mb-2">{data.name || "Your Name"}</h3>
-          <p className="mb-3 fw-medium">{data.role || "Your Role"}</p>
-          
-          {(data.email || data.phone || data.website) && (
-            <div className="social-links mb-3">
-              {data.email && <a href={`mailto:${data.email}`} className="social-link"><i className="fas fa-envelope"></i></a>}
-              {data.phone && <a href={`tel:${data.phone}`} className="social-link"><i className="fas fa-phone"></i></a>}
-              {data.website && <a href={data.website} className="social-link"><i className="fas fa-globe"></i></a>}
-              {data.linkedin && <a href={data.linkedin} className="social-link"><i className="fab fa-linkedin"></i></a>}
-              {data.github && <a href={data.github} className="social-link"><i className="fab fa-github"></i></a>}
-            </div>
-          )}
-          
-          {data.about && (
-            <>
-              <div className="section-divider"></div>
-              <div className="mb-3">
-                <h6 className="fw-semibold">About</h6>
-                <p className="small">{data.about.substring(0, 100)}...</p>
+      <div className="preview-container">
+        <Card className={`${templateClass} position-relative overflow-hidden`} style={{
+          background: template === 'modern' ? 'linear-gradient(135deg, #1f2937, #374151)' : 
+                     template === 'creative' ? 'var(--primary-gradient, linear-gradient(135deg, #ff6b6b, #ee5a24))' :
+                     template === 'dark' ? '#0f172a' : 'white',
+          color: template === 'modern' || template === 'creative' || template === 'dark' ? 'white' : '#333',
+          minHeight: 'auto',
+          height: 'auto'
+        }}>
+          <Card.Body className="text-center position-relative p-4">
+            {image && (
+              <img 
+                src={image} 
+                alt="Profile" 
+                className="profile-img rounded-circle mb-3"
+              />
+            )}
+            <h3 className="fw-bold mb-2">{data.name || "Your Name"}</h3>
+            <p className="mb-3 fw-medium">{data.role || "Your Role"}</p>
+            
+            {(data.email || data.phone || data.website) && (
+              <div className="social-links mb-3">
+                {data.email && <a href={`mailto:${data.email}`} className="social-link"><i className="fas fa-envelope"></i></a>}
+                {data.phone && <a href={`tel:${data.phone}`} className="social-link"><i className="fas fa-phone"></i></a>}
+                {data.website && <a href={data.website} className="social-link"><i className="fas fa-globe"></i></a>}
+                {data.linkedin && <a href={data.linkedin} className="social-link"><i className="fab fa-linkedin"></i></a>}
+                {data.github && <a href={data.github} className="social-link"><i className="fab fa-github"></i></a>}
               </div>
-            </>
-          )}
-          
-          {skillsArray.length > 0 && (
-            <div className="mb-3">
-              <h6 className="fw-semibold">Skills</h6>
-              <div>
-                {skillsArray.slice(0, 6).map((skill, index) => (
-                  <span key={index} className="skill-tag">{skill}</span>
+            )}
+            
+            {data.about && (
+              <>
+                <div className="section-divider"></div>
+                <div className="mb-3">
+                  <h6 className="fw-semibold">About</h6>
+                  <p className="small text-start px-3">{data.about}</p>
+                </div>
+              </>
+            )}
+            
+            {skillsArray.length > 0 && (
+              <div className="mb-3">
+                <h6 className="fw-semibold">Skills</h6>
+                <div>
+                  {skillsArray.map((skill, index) => (
+                    <Badge key={index} bg="primary" className="me-2 mb-2 px-3 py-2" style={{fontSize: '0.8rem'}}>
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {projectsArray.length > 0 && (
+              <div className="mb-3">
+                <h6 className="fw-semibold">Projects</h6>
+                {projectsArray.map((project, index) => (
+                  <div key={index} className="project-card text-start">
+                    <small>{project}</small>
+                  </div>
                 ))}
               </div>
-            </div>
-          )}
-          
-          {projectsArray.length > 0 && (
-            <div>
-              <h6 className="fw-semibold">Projects</h6>
-              {projectsArray.slice(0, 2).map((project, index) => (
-                <div key={index} className="project-card">
-                  <small>{project.substring(0, 50)}...</small>
-                </div>
-              ))}
-            </div>
-          )}
-        </Card.Body>
-      </Card>
+            )}
+            
+            {experienceArray.length > 0 && (
+              <div className="mb-3">
+                <h6 className="fw-semibold">Experience</h6>
+                {experienceArray.map((exp, index) => (
+                  <div key={index} className="project-card text-start">
+                    <small>{exp}</small>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {educationArray.length > 0 && (
+              <div className="mb-3">
+                <h6 className="fw-semibold">Education</h6>
+                {educationArray.map((edu, index) => (
+                  <div key={index} className="project-card text-start">
+                    <small>{edu}</small>
+                  </div>
+                ))}
+              </div>
+            )}
+            
+            {certificationsArray.length > 0 && (
+              <div className="mb-3">
+                <h6 className="fw-semibold">Certifications</h6>
+                {certificationsArray.map((cert, index) => (
+                  <div key={index} className="project-card text-start">
+                    <small><i className="fas fa-certificate me-2"></i>{cert}</small>
+                  </div>
+                ))}
+              </div>
+            )}
+          </Card.Body>
+        </Card>
+      </div>
     );
   };
 
@@ -420,21 +461,21 @@ export default function App() {
                             <i className="fas fa-chart-line"></i>
                           </div>
                           <div className="stats-counter">{getCompletionPercentage()}%</div>
-                          <small className="text-white-50">Complete</small>
+                          <small className="text-dark">Complete</small>
                         </Col>
                         <Col md={4} className="text-center">
                           <div className="feature-icon">
                             <i className="fas fa-palette"></i>
                           </div>
                           <div className="stats-counter">{Object.keys(colorThemes).length}</div>
-                          <small className="text-white-50">Themes</small>
+                          <small className="text-dark">Themes</small>
                         </Col>
                         <Col md={4} className="text-center">
                           <div className="feature-icon">
                             <i className="fas fa-download"></i>
                           </div>
                           <div className="stats-counter">{exportFormats.length}</div>
-                          <small className="text-white-50">Formats</small>
+                          <small className="text-dark">Formats</small>
                         </Col>
                       </Row>
                     </Card.Body>
@@ -449,25 +490,34 @@ export default function App() {
           <Col lg={11}>
             <Row className="g-4">
               <Col lg={7}>
-                <Card className="h-100">
-                  <Card.Header className="text-white d-flex justify-content-between align-items-center" style={{background: 'var(--primary-gradient)'}}>
-                    <h5 className="mb-0"><i className="fas fa-cogs me-2"></i>Portfolio Customization</h5>
-                    <div>
-                      <Button 
-                        variant="light" 
-                        size="sm" 
-                        className="me-2"
-                        onClick={() => setShowPreview(true)}
-                      >
-                        <i className="fas fa-eye me-1"></i>Preview
-                      </Button>
-                      <Button 
-                        variant="light" 
-                        size="sm"
-                        onClick={() => setShowStats(!showStats)}
-                      >
-                        <i className="fas fa-chart-bar me-1"></i>Stats
-                      </Button>
+                <Card className="h-100 shadow-sm border-0">
+                  <Card.Header className="bg-white border-bottom" style={{borderBottom: '1px solid #e5e7eb !important'}}>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="d-flex align-items-center">
+                        <div className="bg-primary bg-gradient rounded-circle p-2 me-3">
+                          <i className="fas fa-cogs text-white"></i>
+                        </div>
+                        <div>
+                          <h5 className="mb-0 text-dark fw-semibold">Portfolio Customization</h5>
+                          <small className="text-muted">Configure your professional portfolio</small>
+                        </div>
+                      </div>
+                      <div className="d-flex gap-2">
+                        <Button 
+                          variant="outline-primary" 
+                          size="sm"
+                          onClick={() => setShowPreview(true)}
+                        >
+                          <i className="fas fa-eye me-1"></i>Preview
+                        </Button>
+                        <Button 
+                          variant="outline-secondary" 
+                          size="sm"
+                          onClick={() => setShowStats(!showStats)}
+                        >
+                          <i className="fas fa-chart-bar me-1"></i>Stats
+                        </Button>
+                      </div>
                     </div>
                   </Card.Header>
                   <Card.Body>
@@ -730,11 +780,19 @@ export default function App() {
               </Col>
 
               <Col lg={5}>
-                <Card>
-                  <Card.Header className="bg-success text-white">
-                    <h5 className="mb-0"><i className="fas fa-eye me-2"></i>Live Preview</h5>
+                <Card className="h-100 shadow-sm border-0">
+                  <Card.Header className="bg-white border-bottom" style={{borderBottom: '1px solid #e5e7eb !important'}}>
+                    <div className="d-flex align-items-center">
+                      <div className="bg-success bg-gradient rounded-circle p-2 me-3">
+                        <i className="fas fa-eye text-white"></i>
+                      </div>
+                      <div>
+                        <h5 className="mb-0 text-dark fw-semibold">Live Preview</h5>
+                        <small className="text-muted">Real-time portfolio preview</small>
+                      </div>
+                    </div>
                   </Card.Header>
-                  <Card.Body className="portfolio-preview p-0">
+                  <Card.Body className="portfolio-preview">
                     <TemplatePreview />
                   </Card.Body>
                 </Card>
