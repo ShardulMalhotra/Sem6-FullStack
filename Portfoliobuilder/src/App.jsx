@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Card, Form, Button, Badge, Tabs, Tab, Modal, ProgressBar } from "react-bootstrap";
 
-export default function App() {
+function App() {
   const [template, setTemplate] = useState("classic");
   const [colorTheme, setColorTheme] = useState("blue");
   const [image, setImage] = useState(null);
@@ -329,113 +329,22 @@ export default function App() {
   };
 
   const TemplatePreview = () => {
-    const skillsArray = data.skills.split ? data.skills.split(',').map(s => s.trim()).filter(s => s) : data.skills || [];
-    const projectsArray = data.projects ? data.projects.split('\n').filter(p => p.trim()) : [];
-    const experienceArray = data.experience ? data.experience.split('\n').filter(e => e.trim()) : [];
-    const educationArray = data.education ? data.education.split('\n').filter(e => e.trim()) : [];
-    const certificationsArray = data.certifications ? data.certifications.split('\n').filter(c => c.trim()) : [];
-    const templateClass = `template-${template}`;
+    const skillsArray = data.skills ? data.skills.split(',').map(s => s.trim()).filter(s => s) : [];
     
     return (
-      <div className="preview-container">
-        <Card className={`${templateClass} position-relative overflow-hidden`} style={{
-          background: template === 'modern' ? 'linear-gradient(135deg, #1f2937, #374151)' : 
-                     template === 'creative' ? 'var(--primary-gradient, linear-gradient(135deg, #ff6b6b, #ee5a24))' :
-                     template === 'dark' ? '#0f172a' : 'white',
-          color: template === 'modern' || template === 'creative' || template === 'dark' ? 'white' : '#333',
-          minHeight: 'auto',
-          height: 'auto'
-        }}>
-          <Card.Body className="text-center position-relative p-4">
-            {image && (
-              <img 
-                src={image} 
-                alt="Profile" 
-                className="profile-img rounded-circle mb-3"
-              />
-            )}
-            <h3 className="fw-bold mb-2">{data.name || "Your Name"}</h3>
-            <p className="mb-3 fw-medium">{data.role || "Your Role"}</p>
-            
-            {(data.email || data.phone || data.website) && (
-              <div className="social-links mb-3">
-                {data.email && <a href={`mailto:${data.email}`} className="social-link"><i className="fas fa-envelope"></i></a>}
-                {data.phone && <a href={`tel:${data.phone}`} className="social-link"><i className="fas fa-phone"></i></a>}
-                {data.website && <a href={data.website} className="social-link"><i className="fas fa-globe"></i></a>}
-                {data.linkedin && <a href={data.linkedin} className="social-link"><i className="fab fa-linkedin"></i></a>}
-                {data.github && <a href={data.github} className="social-link"><i className="fab fa-github"></i></a>}
-              </div>
-            )}
-            
-            {data.about && (
-              <>
-                <div className="section-divider"></div>
-                <div className="mb-3">
-                  <h6 className="fw-semibold">About</h6>
-                  <p className="small text-start px-3">{data.about}</p>
-                </div>
-              </>
-            )}
-            
-            {skillsArray.length > 0 && (
-              <div className="mb-3">
-                <h6 className="fw-semibold">Skills</h6>
-                <div>
-                  {skillsArray.map((skill, index) => (
-                    <Badge key={index} bg="primary" className="me-2 mb-2 px-3 py-2" style={{fontSize: '0.8rem'}}>
-                      {skill}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            )}
-            
-            {projectsArray.length > 0 && (
-              <div className="mb-3">
-                <h6 className="fw-semibold">Projects</h6>
-                {projectsArray.map((project, index) => (
-                  <div key={index} className="project-card text-start">
-                    <small>{project}</small>
-                  </div>
-                ))}
-              </div>
-            )}
-            
-            {experienceArray.length > 0 && (
-              <div className="mb-3">
-                <h6 className="fw-semibold">Experience</h6>
-                {experienceArray.map((exp, index) => (
-                  <div key={index} className="project-card text-start">
-                    <small>{exp}</small>
-                  </div>
-                ))}
-              </div>
-            )}
-            
-            {educationArray.length > 0 && (
-              <div className="mb-3">
-                <h6 className="fw-semibold">Education</h6>
-                {educationArray.map((edu, index) => (
-                  <div key={index} className="project-card text-start">
-                    <small>{edu}</small>
-                  </div>
-                ))}
-              </div>
-            )}
-            
-            {certificationsArray.length > 0 && (
-              <div className="mb-3">
-                <h6 className="fw-semibold">Certifications</h6>
-                {certificationsArray.map((cert, index) => (
-                  <div key={index} className="project-card text-start">
-                    <small><i className="fas fa-certificate me-2"></i>{cert}</small>
-                  </div>
-                ))}
-              </div>
-            )}
-          </Card.Body>
-        </Card>
-      </div>
+      <Card className="h-100">
+        <Card.Body className="text-center p-4">
+          {image && <img src={image} alt="Profile" className="rounded-circle mb-3" style={{width: '80px', height: '80px', objectFit: 'cover'}} />}
+          <h4>{data.name || "Your Name"}</h4>
+          <p className="text-muted">{data.role || "Your Role"}</p>
+          {data.about && <p className="small">{data.about}</p>}
+          {skillsArray.length > 0 && (
+            <div className="mt-3">
+              {skillsArray.map((skill, i) => <Badge key={i} bg="primary" className="me-1 mb-1">{skill}</Badge>)}
+            </div>
+          )}
+        </Card.Body>
+      </Card>
     );
   };
 
@@ -813,3 +722,5 @@ export default function App() {
     </div>
   );
 }
+
+export default App;
