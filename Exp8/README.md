@@ -56,3 +56,10 @@ spring.datasource.url=jdbc:mysql://localhost:3306/demo_db
 spring.datasource.username=root
 spring.datasource.password=your_password
 ```
+## Screenshots
+
+<img width="724" height="716" alt="Screenshot 2026-03-27 at 3 24 16 PM" src="https://github.com/user-attachments/assets/e7c59e4d-3387-43ac-94af-ba9be06feb86" />
+
+<img width="708" height="690" alt="Screenshot 2026-03-27 at 3 24 43 PM" src="https://github.com/user-attachments/assets/858b3ab8-c5ed-45bc-8186-7d6fd86c7945" />
+![Uploading Screenshot 2026-03-27 at 3.24.54 PM.png…]()
+
