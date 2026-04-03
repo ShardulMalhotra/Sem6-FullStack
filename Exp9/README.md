@@ -1,121 +1,108 @@
-# 🔐 Spring Security + JWT Authentication Demo
+# Experiment 9 – Spring Boot Security with JWT Authentication
 
-This project demonstrates how to implement authentication and authorization using Spring Security and JSON Web Tokens (JWT) in a RESTful API.
+A Spring Boot REST API demonstrating stateless authentication using Spring Security and JWT (JSON Web Tokens), with MySQL for user persistence.
 
-It showcases how users can securely log in and access protected resources by passing a Bearer Token in the Authorization header.
+## Tech Stack
 
----
-
-## 🚀 Features
-
-- User Authentication using Email & Password
-- JWT Token Generation on Login
-- Stateless Session Management
-- Secure REST APIs using Spring Security
-- Role-based Authorization (optional extension)
-- MySQL / PostgreSQL Database Integration
-- Password Encryption using BCrypt
-
----
-
-## 🛠️ Tech Stack
-
-- Java 17+
-- Spring Boot
+- Java 25
+- Spring Boot 4.x
 - Spring Security
-- JWT (JSON Web Token)
-- Hibernate / JPA
-- MySQL / PostgreSQL
+- JWT (jjwt 0.13.0)
+- Spring Data JPA
+- MySQL
+- Lombok
 - Maven
 
----
+## Project Structure
 
-## 📁 Project Structure
+```
+src/main/java/com/agam/SpringSecEx/
+├── config/
+│   └── SecurityConfig.java       # Security filter chain, BCrypt, AuthManager
+├── Controller/
+│   ├── HelloController.java      # Public greeting endpoint
+│   ├── StudentController.java    # Protected student endpoints
+│   └── UserController.java       # Register & Login endpoints
+├── Entity/
+│   ├── Student.java
+│   ├── UserEntity.java
+│   └── UserPrincipal.java
+├── Filter/
+│   └── JwtFilter.java            # JWT validation filter
+├── Repository/
+│   └── UserRepository.java
+├── Service/
+│   ├── JwtService.java           # Token generation & validation
+│   ├── MyUserDetailService.java  # UserDetailsService impl
+│   └── UserService.java
+└── SpringSecExApplication.java
+```
 
-com.agam.rest_example
-│
-├── Controller
-├── Service
-├── Repository
-├── Entity
-├── Security
-└── Config
+## API Endpoints
 
----
+| Method | Endpoint     | Auth Required | Description              |
+|--------|--------------|---------------|--------------------------|
+| GET    | `/`          | Yes           | Greeting + session ID    |
+| POST   | `/register`  | No            | Register a new user      |
+| POST   | `/login`     | No            | Login and receive JWT    |
+| GET    | `/students`  | Yes           | Get all students         |
+| POST   | `/students`  | Yes           | Add a student            |
 
-## 🔑 Authentication Flow
+## How It Works
 
-1. User sends login request with credentials
-2. Server validates user using Spring Security
-3. JWT token is generated
-4. Token is returned to client
-5. Client sends token in Authorization header for protected APIs
-6. Server validates token before granting access
+1. Register a user via `POST /register`
+2. Login via `POST /login` — returns a JWT token
+3. Pass the token in the `Authorization: Bearer <token>` header for protected routes
 
----
+## Sample Requests
 
-## 📌 API Endpoints
-
-### 🔓 Public Endpoints
-
+**Register**
+```json
 POST /register
+{ "username": "shardul", "password": "pass123" }
+```
 
+**Login**
+```json
 POST /login
+{ "username": "shardul", "password": "pass123" }
+```
+Response: `eyJhbGciOiJIUzI1NiJ9...`
 
+**Get Students** (with JWT)
+```
+GET /students
+Authorization: Bearer <token>
+```
 
----
-
-### 🔒 Protected Endpoints
-
-GET /api/students/{id}
-
-Headers:
-Authorization: Bearer <your_jwt_token>
-
----
-
-## 🧪 Testing with Postman
-
-1. Login using /api/auth/login
-2. Copy token
-3. Use it in Authorization header for protected APIs
-
----
-
-## 🔐 Security Configuration
-
-- CSRF disabled
-- Stateless session
-- JWT filter added before UsernamePasswordAuthenticationFilter
-- BCrypt password encoding
-
----
 ## Screenshots
 
-<img width="1440" height="900" alt="Screenshot 2026-04-02 at 9 28 38 AM" src="https://github.com/user-attachments/assets/9a591bce-844e-4d20-a8b1-5dc686fb56dc" />
+### Register
+![Register](register.png)
 
-<img width="1440" height="900" alt="Screenshot 2026-04-02 at 9 29 52 AM" src="https://github.com/user-attachments/assets/7e31db44-9b87-45cd-b59b-329b2cab8a55" />
+### Login
+![Login](login.png)
 
-<img width="1440" height="900" alt="Screenshot 2026-04-02 at 9 30 25 AM" src="https://github.com/user-attachments/assets/ed62eb06-0239-4c4c-8cd7-565842badeb3" />
+### Get Students
+![Students](students.png)
 
+### Terminal
+![Terminal](terminal.png)
 
+## Database Configuration
 
-<img width="1440" height="900" alt="Screenshot 2026-04-02 at 9 31 04 AM" src="https://github.com/user-attachments/assets/f5fa98bf-3707-4ade-be16-c3ba77efc7ba" />
+Update `src/main/resources/application.properties`:
 
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/university
+spring.datasource.username=root
+spring.datasource.password=your_password
+```
 
+## Running the App
 
-
-
----
-
-## ▶️ How to Run
-
-git clone https://github.com/your-username/your-repo.git
-cd your-repo
+```bash
 mvn spring-boot:run
+```
 
----
-
-## 👨‍💻 Author
-
-Agampal Singh
+Server starts at `http://localhost:8080`
