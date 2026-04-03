@@ -78,13 +78,16 @@ Authorization: Bearer <token>
 ## Screenshots
 
 ### Register
-![Register](register.png)
+![Register](![register](https://github.com/user-attachments/assets/69f69688-f225-4274-969a-dca6e308ed35)
+)
 
 ### Login
-![Login](login.png)
+![Login](![login](https://github.com/user-attachments/assets/795ff8fa-bc0c-47e1-80d5-59b5245f757d)
+)
 
 ### Get Students
-![Students](students.png)
+![Students](![login](https://github.com/user-attachments/assets/8300c259-0b2d-4f3a-a362-102b5fb0b48a)
+)
 
 ### Terminal
 ![Terminal](terminal.png)
