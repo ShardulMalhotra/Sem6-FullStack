@@ -69,9 +69,10 @@ Open the frontend URL shown by Vite (usually `http://localhost:5173`).
 
 ## Screenshots
 
-<img width="818" height="752" alt="Screenshot 2026-04-20 020050" src="https://github.com/user-attachments/assets/e217869a-11e3-4347-970c-e9b7f35ad731" />
-<img width="735" height="702" alt="Screenshot 2026-04-20 020112" src="https://github.com/user-attachments/assets/0e2639ac-fc5a-484d-860f-d190b1146774" />
-<img width="985" height="292" alt="Screenshot 2026-04-20 020207" src="https://github.com/user-attachments/assets/77c8412c-2af4-4eba-8e51-c7bc77c48316" />
+<img width="1343" height="634" alt="Screenshot 2026-04-24 at 9 44 33 AM" src="https://github.com/user-attachments/assets/987d2ab8-64f0-4117-b063-d1d29c66bee9" />
+<img width="1349" height="544" alt="Screenshot 2026-04-24 at 9 45 20 AM" src="https://github.com/user-attachments/assets/56c1cf45-0047-428c-84a5-03a96500cf4d" />
+<img width="1330" height="659" alt="Screenshot 2026-04-24 at 9 45 50 AM" src="https://github.com/user-attachments/assets/3b25badc-74b1-498a-810f-c4cb5fd2163d" />
+
 
 
 ## Notes
