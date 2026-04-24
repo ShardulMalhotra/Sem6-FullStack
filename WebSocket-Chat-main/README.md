@@ -1,4 +1,4 @@
-# Demo WebSocket Chat App
+# WebSocket Chat App
 
 A real-time chat application built with Spring Boot (WebSocket + STOMP + SockJS) and React (Vite).
 
